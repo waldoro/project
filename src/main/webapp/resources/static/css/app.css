@@ -13,3 +13,18 @@
 .photo{
     padding-right: 5px;
 }
+
+#map {
+    height: 100%;
+}
+
+.map-container {
+    width:900px;
+    height:700px;
+}
+
+.points {
+    width:100px;
+    height:40px;
+    color:silver;
+}

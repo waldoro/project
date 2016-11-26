@@ -17,14 +17,25 @@
     <ul class="menu-list">
         <li><a href="#/gallery">Photo Gallery</a></li>
         <li><a href="#/contactus">Contact</a></li>
+        <li><a href="#/map">Map</a></li>
     </ul>
 </div>
 <div ng-view></div>
+ <div class="map-container">
+        <div id="map">
+
+        </div>
+    </div>
+    <div class="points">
+    </div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-POaGneArQ7FGxeyHArYvMg-O2RNUgLg"></script>
 <script src="./webjars/angularjs/1.4.8/angular.js"></script>
 <script src="./webjars/angularjs/1.4.8/angular-resource.js"></script>
 <script src="./webjars/angularjs/1.4.8/angular-route.js"></script>
+<script src="./webjars/jquery/3.1.1/jquery.js"></script>
 <script src="../resources/static/js/app.js"></script>
 <script src="../resources/static/js/controller.js"></script>
+<script src="../resources/static/js/googlemaps.js"></script>
 <link rel="stylesheet" href="./webjars/bootstrap/3.3.6/css/bootstrap.css">
 </body>
 </html>

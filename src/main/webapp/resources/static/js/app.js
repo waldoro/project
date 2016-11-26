@@ -9,6 +9,10 @@ app.config(function($routeProvider){
             templateUrl: 'resources/static/views/contactus.html',
             controller: 'contactusController'
         })
+        .when('/map',{
+                    templateUrl: 'resources/static/views/map.html',
+                    controller: 'mapController'
+                })
         .otherwise(
             { redirectTo: '/'}
         );

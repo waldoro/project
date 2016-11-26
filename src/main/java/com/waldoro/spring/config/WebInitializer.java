@@ -5,6 +5,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -19,6 +20,7 @@ public class WebInitializer implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(Config.class);
+        ctx.register(SpringMongoConfig.class);
 
         ctx.setServletContext(servletContext);
 
