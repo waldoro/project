@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.resource.GzipResourceResolver;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -22,16 +24,22 @@ public class Config extends WebMvcConfigurerAdapter{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/static/js/**")
-        .addResourceLocations("/resources/static/js/");
-        registry.addResourceHandler("/resources/static/css/**")
-                .addResourceLocations("/resources/static/css/");
-        registry.addResourceHandler("/resources/static/views/**")
-                .addResourceLocations("/resources/static/views/");
-        registry.addResourceHandler("/resources/static/**")
-                .addResourceLocations("/resources/static/");
+        registry.addResourceHandler("/resources/js/**")
+        .addResourceLocations("/resources/js/");
+        registry.addResourceHandler("/resources/css/**")
+                .addResourceLocations("/resources/css/");
+        registry.addResourceHandler("/resources/views/**")
+                .addResourceLocations("/resources/views/");
+        registry.addResourceHandler("/resources/images**")
+                .addResourceLocations("/resources/images");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("/webjars/");
+        registry.addResourceHandler("/resources/vendor/**")
+                .addResourceLocations("/resources/vendor/")
+                .setCachePeriod(0)
+                .resourceChain(true)
+                .addResolver(new GzipResourceResolver())
+                .addResolver(new PathResourceResolver());
     }
 
     @Bean

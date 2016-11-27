@@ -10,8 +10,8 @@ public class Event {
 
     public Event() {}
     public Event(double lat, double lon, long id, String title, String authorNickName, String mail, String description, String category, String level) {
-        this.latitude = lat;
-        this.longitude = lon;
+        this.position[0] = lon;
+        this.position[1] = lat;
         this.id = String.valueOf(id);
         this.title = title;
         this.authorNickName = authorNickName;
@@ -21,20 +21,12 @@ public class Event {
         this.level = level;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public double[] getPosition() {
+        return position;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setPosition(double[] position) {
+        this.position = position;
     }
 
     public String getId() {
@@ -110,9 +102,8 @@ public class Event {
     }
 
 
-    private double latitude;
+    private double[] position = new double[2];
 
-    private double longitude;
 
     @Id
     private String id;

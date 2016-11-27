@@ -36,7 +36,7 @@ var position;
           label: labels[labelIndex++ % labels.length],
           map: map
         });
-        $("div.points").append("<p>"+ labels[labelIndex % labels.length] +"Position: "+location.lat() +","+location.lng() +"</p>");
+        $("div.points").append("<p>"+ labels[labelIndex % labels.length] +"Position: "+location.lat +","+location.lng +"</p>");
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);

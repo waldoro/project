@@ -9,16 +9,20 @@ import java.util.List;
  */
 public interface EventService {
 
-        void saveEvent(Event event);
+        Event saveEvent(Event event);
 
         void updateEvent(Event event);
 
         void deleteEventById(long id);
 
-        List<Event> findEventsNearby(double lat, double lon, int maxResult);
+        List<Event> findEventsNearby(double lat, double lon, double distance);
 
         List<Event> findEventsNearby(String category);
 
         List<Event> getAllEvents();
+
+        void initialize();
+
+        List<Event> findEventsNearbyKm(double lat, double lon, double distance);
 
 }

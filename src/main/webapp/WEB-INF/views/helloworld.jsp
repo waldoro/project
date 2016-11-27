@@ -9,7 +9,7 @@
     <title>Spring and Angularjs Tutorial</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../resources/static/css/app.css">
+    <link rel="stylesheet" href="../resources/css/app.css">
 </head>
 <body>
 <h2>Spring and Angularjs Tutorial</h2>
@@ -33,9 +33,9 @@
 <script src="./webjars/angularjs/1.4.8/angular-resource.js"></script>
 <script src="./webjars/angularjs/1.4.8/angular-route.js"></script>
 <script src="./webjars/jquery/3.1.1/jquery.js"></script>
-<script src="../resources/static/js/app.js"></script>
-<script src="../resources/static/js/controller.js"></script>
-<script src="../resources/static/js/googlemaps.js"></script>
+<script src="../resources/js/app.js"></script>
+<script src="../resources/js/controller.js"></script>
+<script src="../resources/js/googlemaps.js"></script>
 <link rel="stylesheet" href="./webjars/bootstrap/3.3.6/css/bootstrap.css">
 </body>
 </html>

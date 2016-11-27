@@ -25,7 +25,7 @@ public class SpringMongoConfig {
     public  MongoDbFactory mongoDbFactory() throws Exception {
         MongoClient mongoClient = new MongoClient("localhost",27017);
         UserCredentials userCredentials = new UserCredentials("","");
-        return new SimpleMongoDbFactory(mongoClient, "concretepage",userCredentials);
+        return new SimpleMongoDbFactory(mongoClient, "waldoro",userCredentials);
     }
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {

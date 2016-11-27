@@ -3,12 +3,19 @@ package com.waldoro.services;
 import com.waldoro.models.Event;
 import com.waldoro.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.Circle;
+import org.springframework.data.geo.Distance;
+import org.springframework.data.geo.Metrics;
+import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
+
+import static org.springframework.data.geo.Metrics.KILOMETERS;
 
 /**
  * Created by wrokita on 15/11/2016.
@@ -32,8 +39,9 @@ public class EventServiceImpl implements EventService{
 
 
     @Override
-    public void saveEvent(Event event) {
-
+    public Event saveEvent(Event event) {
+        event.setId(new Date().getTime()+"");
+        return repository.save(event);
     }
 
     @Override
@@ -47,8 +55,13 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public List<Event> findEventsNearby(double lat, double lon, int maxResult) {
-        return null;
+    public List<Event> findEventsNearbyKm(double lat, double lon, double distance) {
+
+        return repository.findByPositionNear(new Point(lon,lat), new Distance(distance, KILOMETERS));
+    }
+    @Override
+    public List<Event> findEventsNearby(double lat, double lon, double distance) {
+        return repository.findByPositionWithin(new Circle(lon,lat,distance));
     }
 
     @Override
@@ -56,7 +69,11 @@ public class EventServiceImpl implements EventService{
         return repository.findByCategory(category);
     }
 
-
+    @Override
+    public void initialize() {
+        repository.deleteAll();
+        repository.save(createDummyEvents());
+    }
 
     private static List<Event> createDummyEvents() {
         events.add(new Event(51.155446947403256,16.899032592773438,counter.incrementAndGet(), "Title " + counter.get(), "Name" + counter.get(), "Mail", "Description"+counter.get(),"SQUASH","BEGINNER"));
